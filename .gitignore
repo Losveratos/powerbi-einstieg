@@ -8,6 +8,10 @@
 **/.pbi/cache.abf
 **/.pbi/unappliedChanges.json
 
+# Ungeschnittene Bildschirmaufnahmen: zeigen den ganzen Desktop inklusive
+# Taskleiste. Ins Repo gehoeren nur die zugeschnittenen Bilder aus site/img.
+site/img/raw/
+
 # Python
 __pycache__/
 *.py[cod]

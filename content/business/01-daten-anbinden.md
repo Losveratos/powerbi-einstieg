@@ -8,6 +8,8 @@ Die Datei `verkaeufe_2025.csv` liegt in Power BI und du hast einmal draufgeschau
 
 ## So geht's
 
+<!-- BILD: modul-01-daten-abrufen | Menüband „Start" — der rote Rahmen zeigt „Daten abrufen". -->
+
 1. Klicke im Menüband auf **Start → Daten abrufen**. Es klappt eine Liste auf.
 2. Wähle darin **Web**. (Steht es nicht in der Liste: **Mehr…** ganz unten,
    dann links **Andere**, dann **Web**.)

@@ -31,6 +31,8 @@ die Auffälligkeit in den Daten.
 6. Es klappt eine Liste auf: **Summe · Mittelwert · Minimum · Maximum ·
    Anzahl (eindeutig) · Anzahl** und weitere. Wähle **Mittelwert**.
 
+   <!-- BILD: modul-05-aggregation | Das aufgeklappte Menü — „Mittelwert“ ist der Eintrag, den du brauchst. -->
+
    > In der Karte steht danach `Durchschnitt von Marge`. Power BI benutzt für
    > dieselbe Sache mal „Mittelwert", mal „Durchschnitt" — gemeint ist beides
    > Mal: alle Werte zusammenzählen und durch ihre Anzahl teilen.

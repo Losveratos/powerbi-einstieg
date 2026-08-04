@@ -16,6 +16,8 @@ hält. Alle fünf reparieren wir jetzt — mit **{{schritte}} Handgriffen**.
 
 ## So geht's
 
+<!-- BILD: modul-02-transformieren | Derselbe Menüband-Bereich — jetzt ist „Daten transformieren" markiert. -->
+
 Klick zuerst im Menüband auf **Start → Daten transformieren**. Es öffnet sich
 ein neues Fenster: der **Power Query-Editor**. Hier arbeitest du das ganze Modul.
 

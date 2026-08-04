@@ -19,12 +19,15 @@ Tabelle).
 1. Klick auf eine leere Stelle der weißen Seite.
 2. Klick im Bereich **Visualisierungen** auf das Symbol **Karte** — es sieht aus
    wie ein Kästchen mit den Ziffern **123** darin.
+
+<!-- BILD: modul-03-karte | Der Bereich „Visualisierungen“ — markiert ist das Symbol „Karte“. -->
+
    (Achtung: Es gibt auch ein Symbol mit einer Weltkugel, das ebenfalls „Karte"
    heißt. Das ist eine Landkarte — nimm das mit den Ziffern.)
 3. Auf der Seite erscheint ein leeres graues Kästchen.
 4. Klapp im Bereich **Daten** die Tabelle **verkaeufe_2025** auf und setz das
    Häkchen bei **Umsatz**. In dem Kästchen erscheint eine Zahl.
-5. Die Zahl steht dort abgekürzt: **2,10 Mio.**. Power BI kürzt große
+5. Die Zahl steht dort abgekürzt: **2,10 Mio.** Power BI kürzt große
    Zahlen von sich aus — „Mio." heißt Millionen. Das ist so in Ordnung und
    bleibt auch so; für die Frage „wie viel insgesamt?" reicht diese Genauigkeit
    völlig.
@@ -67,10 +70,10 @@ aufgeteilt nach einer Dimension.
 
 ## ✅ Kontrollpunkt
 
-> Die Karte zeigt: **2,10 Mio.**.
+> Die Karte zeigt: **2,10 Mio.**
 > Im Balkendiagramm steht **Süd** ganz oben.
 >
-> Steht dort **210,01 Mio.**? → Dann wurde in Modul 2 der Umsatz ohne
+> Steht dort stattdessen **210,01 Mio.** → Dann wurde in Modul 2 der Umsatz ohne
 > **Gebietsschema Englisch (USA)** umgewandelt. Power BI hat den Punkt als
 > Tausendertrennzeichen gelesen, dadurch sind alle Beträge hundertmal zu groß.
 > Geh zurück zu Modul 2, Handgriff 7.

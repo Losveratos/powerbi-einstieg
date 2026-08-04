@@ -29,6 +29,9 @@ Rechner.
 5. **Als PDF exportieren.** **Datei → Exportieren → In PDF exportieren**.
    Power BI erzeugt eine PDF-Datei mit deiner Seite und öffnet sie.
 
+<!-- BILD: modul-06-export | Datei → Exportieren — markiert ist „In PDF exportieren“. -->
+
+
 > **Und wenn ich das teilen will?** Im Menüband gibt es einen Knopf
 > **Veröffentlichen**. Der lädt den Bericht ins Internet, damit andere ihn
 > anschauen können — dafür brauchst du allerdings ein Geschäfts- oder

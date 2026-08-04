@@ -22,6 +22,9 @@ Daten einschränken.
    Alle drei Bilder haben gleichzeitig reagiert — du musstest sie nicht einzeln
    umstellen.
 
+<!-- BILD: modul-04-datenschnitt | Ein Klick im Datenschnitt (rot markiert) verändert alle Bilder der Seite gleichzeitig. -->
+
+
 6. Klick noch einmal auf **Technik**, um die Auswahl aufzuheben. Alles ist
    wieder wie vorher.
 

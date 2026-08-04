@@ -1,0 +1,73 @@
+# SKIZZE für v2 — noch nicht lauffähig.
+# generate.py kennt derzeit nur die Spaltenstruktur von Case 1 (business).
+# Teilt sich die Generator-Logik mit Case 3 (haushalt).
+
+case: reise
+titel: "Sechs Wochen Südostasien"
+emoji: "🎒"
+kurz: "Reisekasse gegen Startbudget"
+story: >-
+  Woche 3 von 6 in Südostasien, 2.000 € Startbudget. Alles steht in einer
+  Tabelle. Am Ende weißt du, ob es reicht — und was am meisten kostet.
+
+seed: 42
+zeilen: 2400
+schritte: 8
+
+repo:
+  owner: Losveratos
+  name: powerbi-einstieg
+  branch: main
+datei: data/reise/ausgaben.csv
+
+# Kürzerer Zeitraum als die anderen Cases: 6 Wochen statt 12 Monate.
+# Die Zeitachse in Modul 3 läuft dann über Wochen, nicht über Monate —
+# der einzige Punkt, an dem sich die Anleitung anpassen müsste.
+zeitraum:
+  von: "2025-10-06"
+  bis: "2025-11-16"
+
+laender:          # Hauptdimension (5)
+  Thailand: 0.28
+  Vietnam: 0.24
+  Kambodscha: 0.16
+  Laos: 0.14
+  Malaysia: 0.18
+
+kategorien:       # Nebendimension (6)
+  Unterkunft: 0.22
+  Essen: 0.30
+  Transport: 0.18
+  Aktivitäten: 0.16
+  Visa: 0.04
+  Sonstiges: 0.10
+
+# Kennzahl A (summierbar): Betrag in €
+betrag:
+  log_mittel: 2.2
+  log_streuung: 0.85
+  min: 0.5
+budget: 2000.0
+
+# Kennzahl B (NICHT summierbar): Wechselkurs am Ausgabetag
+# Ein Kurs ist ein Verhältnis — die Summe aller Kurse ist bedeutungslos.
+wechselkurs:
+  je_land:
+    Thailand: 38.5
+    Vietnam: 26500.0
+    Kambodscha: 4100.0
+    Laos: 22800.0
+    Malaysia: 4.9
+  tagesschwankung: 0.02
+  # Signal für Modul 5: Ein Land ist pro Tag deutlich teurer als gedacht —
+  # sichtbar erst, wenn man die Ausgaben je Land auf Tage umlegt.
+  signal:
+    land: Thailand
+    ab_woche: 3
+    faktor: 1.45
+
+fehler:
+  land_leerzeichen_anteil: 0.10
+  kategorie_kleinschreibung_anteil: 0.05
+  kopfzeilen_muell: "# Export Budget-App v2.1 - 18.11.2025"
+  leere_zeilen: 3

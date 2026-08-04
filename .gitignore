@@ -1,0 +1,19 @@
+# Binaerdateien gehoeren als Release-Assets ans Repo, nicht in die Historie.
+*.pbix
+*.pbit
+
+# Power BI Desktop / PBIP-Nebenprodukte
+*.abf
+.pbi/localSettings.json
+.pbi/cache.abf
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Betriebssystem
+Thumbs.db
+desktop.ini
+.DS_Store

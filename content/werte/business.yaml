@@ -1,0 +1,31 @@
+# ERZEUGT VON generator/verify.py - NICHT VON HAND AENDERN.
+# Quelle: data/business/verkaeufe_2025.csv (Seed 42)
+case: business
+checkpoint_fertig: https://github.com/Losveratos/powerbi-einstieg/releases/latest/download/business_fertig.pbix
+checkpoint_geputzt: https://github.com/Losveratos/powerbi-einstieg/releases/latest/download/business_checkpoint_geputzt.pbix
+checkpoint_visuals: https://github.com/Losveratos/powerbi-einstieg/releases/latest/download/business_checkpoint_visuals.pbix
+csv_url: https://raw.githubusercontent.com/Losveratos/powerbi-einstieg/main/data/business/verkaeufe_2025.csv
+datei_name: verkaeufe_2025.csv
+download_url: https://github.com/Losveratos/powerbi-einstieg/releases/latest/download/verkaeufe_2025.csv
+emoji: 💼
+falsche_zahl: 763,64
+filterregion: Nord
+filterwert: '480.981'
+gesamtwert: 2.100.088
+groesste_region: Süd
+kurz: Verkaufszahlen aus dem Vertriebssystem
+richtige_zahl: 31,8 %
+schritte: '8'
+signal_andere: 34 %
+signal_monat_name: April
+signal_nachher: 23 %
+signal_region: Nord
+signal_vorher: 34 %
+spalten: '6'
+story: 'Deine Chefin bittet dich, die Verkaufszahlen des letzten Jahres anzuschauen.
+  Du bekommst dafür eine Datei aus dem System. Am Ende kannst du sagen: wie viel,
+  wer, wann — und was auffällt.'
+tabellen_name: verkaeufe_2025
+titel: Verkaufszahlen 2025
+zeilen: '2.400'
+zeilen_roh: '2.405'

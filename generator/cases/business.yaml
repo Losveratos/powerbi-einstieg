@@ -1,0 +1,96 @@
+# Parametersatz Case 1 · Business
+# Seed und Zeilenzahl NIE ändern — die Kontrollzahlen hängen daran.
+
+case: business
+titel: "Verkaufszahlen 2025"
+emoji: "💼"
+kurz: "Verkaufszahlen aus dem Vertriebssystem"
+story: >-
+  Deine Chefin bittet dich, die Verkaufszahlen des letzten Jahres anzuschauen.
+  Du bekommst dafür eine Datei aus dem System. Am Ende kannst du sagen: wie viel,
+  wer, wann — und was auffällt.
+
+seed: 42
+zeilen: 2400
+
+# --- Zielort der CSV im Web (raw.githubusercontent) --------------------------
+# ANNAHME: gleicher GitHub-Owner wie das Kitchen-Repo, neues Repo powerbi-einstieg.
+# Ändere hier owner/repo/branch → render.py zieht die URL überall im Text nach.
+repo:
+  owner: Losveratos
+  name: powerbi-einstieg
+  branch: main
+datei: data/business/verkaeufe_2025.csv
+
+# --- Anzahl Handgriffe in Modul 2 (steht so im Text, s. content/_template) ---
+# Wird als {{schritte}} durchgereicht, damit Text und Kontrollpunkt nie
+# auseinanderlaufen. Bei Änderung an Modul 2 hier mitziehen.
+schritte: 8
+
+zeitraum:
+  von: "2025-01-01"
+  bis: "2025-12-31"
+
+# --- Spalte 2: Hauptdimension ------------------------------------------------
+regionen:
+  # Gewichte = Anteil der Zeilen. Nord bewusst leicht unter den anderen,
+  # aber unauffällig (Umsatz-Signal soll NICHT die Auffälligkeit sein).
+  Nord: 0.22
+  Süd:  0.26
+  Ost:  0.26
+  West: 0.26
+
+# --- Spalte 3+4: Nebendimension und Produkte ---------------------------------
+# Bewusst nur einwortige Gruppennamen: Modul 2 repariert die
+# Groß-/Kleinschreibung mit "Jedes Wort groß" (Text.Proper).
+produktgruppen:
+  Bürobedarf:
+    gewicht: 0.26
+    preisfaktor: 0.55
+    margenoffset: 0.04
+    produkte: [Druckerpapier, Notizbuch, Ordner, Stiftebox]
+  Möbel:
+    gewicht: 0.16
+    preisfaktor: 2.60
+    margenoffset: -0.02
+    produkte: [Bürostuhl, Rollcontainer, Schreibtisch, Regal]
+  Technik:
+    gewicht: 0.20
+    preisfaktor: 1.90
+    margenoffset: -0.03
+    produkte: [Dockingstation, Monitor, Headset, Tastatur]
+  Verbrauchsmaterial:
+    gewicht: 0.22
+    preisfaktor: 0.70
+    margenoffset: 0.02
+    produkte: [Toner, Druckerpatrone, Etiketten, Klebeband]
+  Zubehör:
+    gewicht: 0.16
+    preisfaktor: 0.90
+    margenoffset: 0.01
+    produkte: [Monitorarm, Kabelkanal, Handballenauflage, USB-Hub]
+
+# --- Spalte 5: Kennzahl A (summierbar) ---------------------------------------
+umsatz:
+  log_mittel: 6.40     # exp(6.40) ≈ 601 € Median vor Preisfaktor
+  log_streuung: 0.55
+  min: 12.0
+
+# --- Spalte 6: Kennzahl B (NICHT summierbar) ---------------------------------
+marge:
+  basis: 0.33
+  streuung: 0.045
+  min: 0.05
+  max: 0.55
+  # Das eingebaute Signal: Nord bricht ab April ein.
+  signal:
+    region: Nord
+    ab_monat: 4
+    delta: -0.11
+
+# --- Eingebaute Fehler -------------------------------------------------------
+fehler:
+  region_leerzeichen_anteil: 0.10   # "Nord " statt "Nord"
+  gruppe_kleinschreibung_anteil: 0.05
+  kopfzeilen_muell: "# Export aus VertriebsSystem v4.2 - 03.01.2026"
+  leere_zeilen: 3

@@ -1,0 +1,69 @@
+# SKIZZE für v2 — noch nicht lauffähig.
+# generate.py kennt derzeit nur die Spaltenstruktur von Case 1 (business).
+# Für diesen Case braucht der Generator eine zweite Spaltenvorlage:
+# Zeit = Erscheinungsmonat, Hauptdim = Titel, Nebendim = Plattform + Genre.
+
+case: games
+titel: "Konsolenspiele im Vergleich"
+emoji: "🎮"
+kurz: "Verkaufszahlen und Kritiker-Wertungen"
+story: >-
+  Im Klassenchat läuft der Konsolen-Streit. Du holst dir die Verkaufszahlen und
+  die Wertungen als Datei. Am Ende weißt du: meistverkauft und bestbewertet sind
+  zwei verschiedene Listen.
+
+seed: 42
+zeilen: 2400
+schritte: 8
+
+repo:
+  owner: Losveratos
+  name: powerbi-einstieg
+  branch: main
+datei: data/games/spiele_2025.csv
+
+zeitraum:
+  von: "2025-01-01"
+  bis: "2025-12-31"
+
+# Hauptdimension: ~40 Titel
+titel_anzahl: 40
+
+plattformen:      # Nebendimension 1
+  PlayStation: 0.38
+  Xbox: 0.27
+  Switch: 0.35
+
+genres:           # Nebendimension 2
+  Action: 0.22
+  Sport: 0.16
+  Rennspiel: 0.14
+  Rollenspiel: 0.18
+  Strategie: 0.12
+  Simulation: 0.18
+
+# Kennzahl A (summierbar): Verkäufe in Stück
+verkaeufe:
+  log_mittel: 10.5
+  log_streuung: 0.8
+  min: 500
+
+# Kennzahl B (NICHT summierbar): Kritiker-Wertung 0–100
+wertung:
+  basis: 74
+  streuung: 9
+  min: 38
+  max: 97
+  # Das eingebaute Signal für Modul 5: Die meistverkaufte Plattform hat
+  # NICHT die besten Wertungen — Summe der Wertungen ist Unsinn,
+  # der Mittelwert dreht die Rangfolge um.
+  signal:
+    plattform_meistverkauft: Switch
+    plattform_bestbewertet: PlayStation
+    delta: 6
+
+fehler:
+  plattform_leerzeichen_anteil: 0.10
+  genre_kleinschreibung_anteil: 0.05
+  kopfzeilen_muell: "# Export GameCharts DE - Stand 02.01.2026"
+  leere_zeilen: 3

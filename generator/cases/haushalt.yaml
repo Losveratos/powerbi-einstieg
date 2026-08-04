@@ -1,0 +1,66 @@
+# SKIZZE für v2 — noch nicht lauffähig.
+# generate.py kennt derzeit nur die Spaltenstruktur von Case 1 (business).
+# Case 3 und 4 teilen sich die Logik "Ausgaben nach Kategorie über Zeit" —
+# eine gemeinsame Generator-Vorlage reicht für beide.
+
+case: haushalt
+titel: "Haushaltsbuch 2025"
+emoji: "🏠"
+kurz: "Ein Jahr Kontobewegungen"
+story: >-
+  Am Monatsende ist weniger übrig als gedacht. Zwölf Monate Buchungen liegen als
+  Datei vor. Am Ende siehst du, wo das Geld wirklich hingeht.
+
+seed: 42
+zeilen: 2400
+schritte: 8
+
+repo:
+  owner: Losveratos
+  name: powerbi-einstieg
+  branch: main
+datei: data/haushalt/buchungen_2025.csv
+
+zeitraum:
+  von: "2025-01-01"
+  bis: "2025-12-31"
+
+kategorien:       # Hauptdimension (8)
+  Lebensmittel: 0.30
+  Wohnen: 0.06
+  Mobilität: 0.13
+  Freizeit: 0.14
+  Gesundheit: 0.07
+  Kleidung: 0.08
+  Abos: 0.12
+  Sonstiges: 0.10
+
+zahlungsarten:    # Nebendimension (3)
+  Karte: 0.55
+  Bar: 0.25
+  Lastschrift: 0.20
+
+# Kennzahl A (summierbar): Betrag in €
+betrag:
+  log_mittel: 3.1
+  log_streuung: 0.9
+  min: 1.5
+
+# Kennzahl B (NICHT summierbar): Kontostand nach der Buchung
+# Ein Kontostand ist ein Zeitpunktwert — die Summe aller Kontostände ist
+# völliger Unsinn, sinnvoll ist der letzte Wert (oder der Mittelwert).
+kontostand:
+  start: 2400.0
+  monatlicher_eingang: 2650.0
+  # Signal für Modul 5: Der Puffer schrumpft ab Herbst, obwohl die
+  # Monatsausgaben stabil aussehen — die Abos sind gewachsen.
+  signal:
+    kategorie: Abos
+    ab_monat: 9
+    faktor: 1.8
+
+fehler:
+  kategorie_leerzeichen_anteil: 0.10
+  zahlungsart_kleinschreibung_anteil: 0.05
+  kopfzeilen_muell: "# Kontoumsaetze Export - erzeugt am 03.01.2026"
+  leere_zeilen: 3

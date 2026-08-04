@@ -1,0 +1,9 @@
+# Die CSV wird 1:1 von raw.githubusercontent ausgeliefert und ist die Grundlage
+# aller Kontrollzahlen. Git darf weder Zeilenenden noch das BOM anfassen.
+*.csv -text
+
+# Alles andere darf Git normal behandeln.
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf

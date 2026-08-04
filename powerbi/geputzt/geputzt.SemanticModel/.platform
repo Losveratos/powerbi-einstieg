@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Verkaufszahlen 2025 - nach Modul 2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bdf9a68d-9fe6-59c4-9e48-776ef3ad66d7"
+  }
+}

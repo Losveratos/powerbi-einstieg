@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Verkaufszahlen 2025 - nach Modul 2"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5a125173-af76-5062-bf50-906c8d538130"
+  }
+}

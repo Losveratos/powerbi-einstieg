@@ -2,10 +2,11 @@
 *.pbix
 *.pbit
 
-# Power BI Desktop / PBIP-Nebenprodukte
-*.abf
-.pbi/localSettings.json
-.pbi/cache.abf
+# Power BI Desktop / PBIP-Nebenprodukte (pro Nutzer, nicht pro Projekt)
+**/*.abf
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+**/.pbi/unappliedChanges.json
 
 # Python
 __pycache__/

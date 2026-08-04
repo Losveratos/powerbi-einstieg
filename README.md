@@ -18,14 +18,16 @@ data/           simulierte CSV je Case (erzeugt, aber eingecheckt —
 generator/      generate.py · verify.py · render.py + Parametersätze
 content/        _template/ (Quelle) · <case>/ (gerendert) · werte/ (Kontrollzahlen)
 checkpoints/    nur Doku — die .pbix-Dateien hängen an einem GitHub-Release
+powerbi/        PBIP-Projekt für den Checkpoint nach Modul 2 (Text, kein .pbix)
 ```
 
 ## Bauen
 
 ```bash
-python generator/generate.py business   # CSV erzeugen (Seed 42)
-python generator/verify.py  business    # Kontrollzahlen aus der CSV errechnen
-python generator/render.py  business    # Templates rendern -> content/business/
+python generator/generate.py  business   # CSV erzeugen (Seed 42)
+python generator/verify.py    business   # Kontrollzahlen aus der CSV errechnen
+python generator/render.py    business   # Templates rendern -> content/business/
+python generator/build_pbip.py business  # Checkpoint-Projekt -> powerbi/geputzt/
 ```
 
 Braucht Python 3.10+ und `pyyaml`.

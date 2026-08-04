@@ -26,19 +26,41 @@ Notausgang, falls der Web-Abruf beim Lernenden nicht funktioniert:
 
 ## So werden sie erzeugt
 
-Das geht nur von Hand, an einem **deutschsprachigen Windows** mit Power BI
-Desktop — die Klickpfade und die Zahlenformate der Anleitung beziehen sich
-genau darauf.
+Gearbeitet wird an einem **deutschsprachigen Windows** mit Power BI Desktop —
+die Klickpfade und die Zahlenformate der Anleitung beziehen sich genau darauf.
 
-1. Den Pfad einmal selbst durchklicken, exakt so, wie er in
+### Checkpoint 1 ist vorgebaut
+
+`business_checkpoint_geputzt.pbix` musst du **nicht** durchklicken. Das Projekt
+liegt fertig als PBIP unter `powerbi/geputzt/` — mit Datenquelle, allen acht
+Power-Query-Handgriffen aus Modul 2 und den fertigen Spaltentypen.
+
+```bash
+python generator/build_pbip.py business   # erzeugt/aktualisiert powerbi/geputzt/
+```
+
+1. `powerbi/geputzt/geputzt.pbip` per Doppelklick in Power BI Desktop öffnen.
+2. **Start → Aktualisieren**. Die Daten werden von GitHub geladen — das geht
+   erst, wenn das Repo öffentlich online ist.
+3. Prüfen: **2.400 Zeilen**, 6 Spalten, Auftragsdatum als Datum, Umsatz und
+   Marge als Dezimalzahl. Rechts in **Angewendete Schritte** stehen dieselben
+   acht Handgriffe wie in Modul 2.
+4. **Datei → Speichern unter** → `business_checkpoint_geputzt.pbix`.
+
+### Checkpoint 2 und 3 von Hand
+
+Die beiden anderen Stände entstehen durch Weiterklicken ab Checkpoint 1:
+
+1. Ab **Modul 3** der Anleitung folgen, exakt so, wie sie in
    `content/business/` steht.
-2. Nach **Modul 2** speichern als `business_checkpoint_geputzt.pbix`.
-3. Nach **Modul 4** speichern als `business_checkpoint_visuals.pbix`.
-4. Nach **Modul 6** speichern als `business_fertig.pbix`.
-5. Dabei prüfen, ob die Zahlen in Power BI mit `content/werte/business.yaml`
-   übereinstimmen — besonders bei den Gebietsschema-Umwandlungen in Modul 2.
+2. Nach **Modul 4** speichern als `business_checkpoint_visuals.pbix`.
+3. Nach **Modul 6** speichern als `business_fertig.pbix`.
+4. Dabei prüfen, ob die Zahlen in Power BI mit `content/werte/business.yaml`
+   übereinstimmen — besonders die Karte in Modul 3 (`gesamtwert`) und der
+   Mittelwert in Modul 5 (`richtige_zahl`).
 
-Aufwand: rund ein halber bis ein Tag, inklusive Screenshots.
+Aufwand: rund zwei bis drei Stunden statt eines Tages, weil der aufwändigste
+Teil — Datenanbindung und Power Query — schon steht.
 
 ## Release anlegen
 

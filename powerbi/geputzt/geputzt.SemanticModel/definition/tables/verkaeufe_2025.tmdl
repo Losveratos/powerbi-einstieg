@@ -1,0 +1,70 @@
+table verkaeufe_2025
+	lineageTag: 0096082b-138f-5f2c-a5b7-c90bb118e04a
+
+	column Auftragsdatum
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e20e4821-428d-51ab-a7e0-558470a528f0
+		summarizeBy: none
+		sourceColumn: Auftragsdatum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 82dd2be3-f282-5fb4-b278-4961833f0930
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Produktgruppe
+		dataType: string
+		lineageTag: 4f48df16-431b-5f93-b87d-d9ec945dc2da
+		summarizeBy: none
+		sourceColumn: Produktgruppe
+
+		annotation SummarizationSetBy = Automatic
+
+	column Produkt
+		dataType: string
+		lineageTag: b6a36612-c7a9-5ed9-aabc-a0029d539443
+		summarizeBy: none
+		sourceColumn: Produkt
+
+		annotation SummarizationSetBy = Automatic
+
+	column Umsatz
+		dataType: double
+		lineageTag: 13418d6a-cdad-5edb-bb93-b59ded144144
+		summarizeBy: sum
+		sourceColumn: Umsatz
+
+		annotation SummarizationSetBy = Automatic
+
+	column Marge
+		dataType: double
+		lineageTag: 16bede5d-d2ea-504b-8594-a7fd53ad0385
+		summarizeBy: sum
+		sourceColumn: Marge
+
+		annotation SummarizationSetBy = Automatic
+
+	partition verkaeufe_2025 = m
+		mode: import
+		source =
+				let
+				    Quelle = Csv.Document(Web.Contents("https://raw.githubusercontent.com/Losveratos/powerbi-einstieg/main/data/business/verkaeufe_2025.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Geänderter Typ" = Table.TransformColumnTypes(Quelle,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", type text}, {"Column5", type text}, {"Column6", type text}}),
+				    #"Entfernte oberste Zeilen" = Table.Skip(#"Geänderter Typ",1),
+				    #"Höher gestufte Header" = Table.PromoteHeaders(#"Entfernte oberste Zeilen", [PromoteAllScalars=true]),
+				    #"Entfernte leere Zeilen" = Table.SelectRows(#"Höher gestufte Header", each not List.IsEmpty(List.RemoveMatchingItems(Record.FieldValues(_), {"", null}))),
+				    #"Gekürzter Text" = Table.TransformColumns(#"Entfernte leere Zeilen",{{"Region", Text.Trim, type text}}),
+				    #"Großgeschrieben in jedem Wort" = Table.TransformColumns(#"Gekürzter Text",{{"Produktgruppe", Text.Proper, type text}}),
+				    #"Geänderter Typ1" = Table.TransformColumnTypes(#"Großgeschrieben in jedem Wort",{{"Auftragsdatum", type date}}),
+				    #"Geänderter Typ mit Gebietsschema" = Table.TransformColumnTypes(#"Geänderter Typ1", {{"Umsatz", type number}}, "en-US"),
+				    #"Geänderter Typ mit Gebietsschema1" = Table.TransformColumnTypes(#"Geänderter Typ mit Gebietsschema", {{"Marge", type number}}, "en-US")
+				in
+				    #"Geänderter Typ mit Gebietsschema1"
+
+	annotation PBI_ResultType = Table

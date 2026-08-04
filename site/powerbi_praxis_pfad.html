@@ -83,6 +83,9 @@ body {
 .pp-modul code {
   background: var(--bg-soft); border: 1px solid var(--line); border-radius: 4px;
   padding: 1px 6px; font-size: .88em; font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* Die CSV-Adresse ist laenger als ein Handy-Display breit ist. Ohne den
+     Umbruch schiebt sie die ganze Seite seitlich raus. */
+  overflow-wrap: anywhere;
 }
 .pp-modul pre {
   background: #1A1A1A; color: #F4F1E8; border-radius: 8px; padding: 16px 18px;

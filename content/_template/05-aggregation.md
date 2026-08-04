@@ -28,15 +28,20 @@ die Auffälligkeit in den Daten.
 
 5. Schau rechts unter **Visualisierungen** in das Feld **Wert**. Dort steht
    `Summe von Marge`. Klick auf den kleinen **Pfeil nach unten** direkt daneben.
-6. Es klappt eine Liste auf: **Summe · Durchschnitt · Minimum · Maximum · Anzahl**
-   und weitere. Wähle **Durchschnitt**.
+6. Es klappt eine Liste auf: **Summe · Mittelwert · Minimum · Maximum ·
+   Anzahl (eindeutig) · Anzahl** und weitere. Wähle **Mittelwert**.
+
+   > In der Karte steht danach `Durchschnitt von Marge`. Power BI benutzt für
+   > dieselbe Sache mal „Mittelwert", mal „Durchschnitt" — gemeint ist beides
+   > Mal: alle Werte zusammenzählen und durch ihre Anzahl teilen.
+
 7. Die Zahl ist jetzt klein, etwa `0,32`. Das stimmt zwar, liest sich aber
    schlecht. Also formatieren wir die Spalte einmal richtig:
    - Klick links am Bildschirmrand auf die **Tabellenansicht** (Gittersymbol).
    - Klick oben auf die Spaltenüberschrift **Marge**.
-   - Im Menüband erscheint der Reiter **Spaltentools**. Klick dort im Feld
-     **Format** auf das Auswahlfeld und wähle **Prozentsatz**.
-   - Stell daneben die **Dezimalstellen** auf **1**.
+   - Im Menüband erscheint der Reiter **Spaltentools**. Klick dort auf das
+     **%-Zeichen** (in der Gruppe *Formatierung*).
+   - Stell rechts daneben die **Dezimalstellen** von `Auto` auf **1**.
    - Zurück zur **Berichtsansicht** (oberstes Symbol links).
 
 ## ✅ Kontrollpunkt
@@ -57,7 +62,7 @@ die Auffälligkeit in den Daten.
 11. Reduziere die X-Achse wieder auf den Monat: Klick im Feld **X-Achse** bei
     **Jahr**, **Quartal** und **Tag** jeweils auf das **X**.
 12. Stell auch hier die Aggregation um: Klick im Feld **Y-Achse** auf den Pfeil
-    neben `Summe von Marge` → **Durchschnitt**.
+    neben `Summe von Marge` → **Mittelwert**.
 13. Jetzt der entscheidende Handgriff: Zieh im Bereich **Daten** das Feld
     **Region** mit gedrückter Maustaste in das Feld **Legende** (rechts unter
     *Visualisierungen*). Aus einer Linie werden vier — eine je Region.

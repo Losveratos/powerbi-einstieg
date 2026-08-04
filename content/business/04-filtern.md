@@ -43,7 +43,9 @@ Filter Dutzende Fragen.
 
 ## ✅ Kontrollpunkt
 
-> Bei angeklicktem Balken **Nord** zeigt die Karte: **480.981**.
+> Bei angeklicktem Balken **Nord** zeigt die Karte:
+> **480,98 Tsd.** („Tsd." heißt Tausend — die genaue Summe wäre
+> 480.981).
 >
 > Steht da etwas anderes? → Häufigste Ursache: Es ist noch zusätzlich eine
 > Produktgruppe im Datenschnitt ausgewählt. Klick sie ab, sodass kein Kästchen

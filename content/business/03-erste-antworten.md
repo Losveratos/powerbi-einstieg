@@ -38,10 +38,10 @@ Tabelle).
    (waagerechte Balken).
 9. Setz im Bereich **Daten** die Häkchen bei **Region** und bei **Umsatz**.
    Power BI legt Region auf die Y-Achse und Umsatz auf die X-Achse.
-10. Sortieren: Fahr mit der Maus über das Diagramm, klick oben rechts auf die
-    **drei Punkte (…)** → **Achse sortieren** → **Umsatz**, danach noch einmal
-    **… → Achse sortieren → Absteigend sortieren**. Jetzt steht der größte
-    Balken oben.
+10. Power BI sortiert die Balken von sich aus nach Größe — der längste steht
+    oben. Sollte das bei dir anders sein: Fahr mit der Maus über das Diagramm,
+    klick oben rechts auf die **drei Punkte (…)** → **Achse sortieren** →
+    **Umsatz**, und noch einmal **… → Achse sortieren → Absteigend sortieren**.
 
 ### Bild 3 — die Linie: Wann?
 

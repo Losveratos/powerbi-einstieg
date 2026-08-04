@@ -43,7 +43,9 @@ Filter Dutzende Fragen.
 
 ## ✅ Kontrollpunkt
 
-> Bei angeklicktem Balken **{{filterregion}}** zeigt die Karte: **{{filterwert}}**.
+> Bei angeklicktem Balken **{{filterregion}}** zeigt die Karte:
+> **{{filterwert_kurz}}** („Tsd." heißt Tausend — die genaue Summe wäre
+> {{filterwert}}).
 >
 > Steht da etwas anderes? → Häufigste Ursache: Es ist noch zusätzlich eine
 > Produktgruppe im Datenschnitt ausgewählt. Klick sie ab, sodass kein Kästchen

@@ -183,8 +183,9 @@ def main() -> int:
         "gesamtwert_kurz": de(gesamtwert / 1_000_000, 2) + " Mio.",
         "gesamtwert_falsch": de(gesamtwert / 10_000, 2) + " Mio.",
         "groesste_region": groesste_region,
-        # Modul 4
+        # Modul 4 - auch hier kuerzt die Karte, hier auf Tausender.
         "filterwert": de(nord_umsatz),
+        "filterwert_kurz": de(nord_umsatz / 1_000, 2) + " Tsd.",
         "filterregion": signal_region,
         # Modul 5
         "falsche_zahl": de(sum(margen), 2),

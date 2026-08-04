@@ -193,10 +193,40 @@ def main() -> int:
                    "report/definition/versionMetadata/1.0.0/schema.json",
         "version": "2.0.0",
     }, indent=2))
+    # Das Basis-Theme muss als Datei danebenliegen und in resourcePackages
+    # deklariert sein. Fehlt es, laedt Power BI Desktop den Bericht nicht
+    # ("Fehler beim Laden des Berichts") - ohne verwertbare Fehlermeldung.
+    theme = "Fluent2-CY26SU07"
+    schreiben(rp / "StaticResources" / "SharedResources" / "BaseThemes" / f"{theme}.json",
+              (WURZEL / "generator" / "assets" / f"{theme}.json").read_text(encoding="utf-8"))
     schreiben(rp / "definition" / "report.json", json.dumps({
         "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/"
                    "report/definition/report/3.3.0/schema.json",
-        "settings": {"useStylableVisualContainerHeader": True},
+        "themeCollection": {
+            "baseTheme": {
+                "name": theme,
+                "reportVersionAtImport": {
+                    "visual": "2.11.0", "report": "3.4.0", "page": "2.3.1",
+                },
+                "type": "SharedResources",
+            }
+        },
+        "resourcePackages": [{
+            "name": "SharedResources",
+            "type": "SharedResources",
+            "items": [{
+                "name": theme,
+                "path": f"BaseThemes/{theme}.json",
+                "type": "BaseTheme",
+            }],
+        }],
+        "settings": {
+            "useStylableVisualContainerHeader": True,
+            "defaultDrillFilterOtherVisuals": True,
+            "allowChangeFilterTypes": True,
+            "useEnhancedTooltips": True,
+            "useDefaultAggregateDisplayName": True,
+        },
     }, indent=2))
     schreiben(rp / "definition" / "pages" / "pages.json", json.dumps({
         "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/"
@@ -211,8 +241,8 @@ def main() -> int:
                   "name": "Seite1",
                   "displayName": "Seite 1",
                   "displayOption": "FitToPage",
-                  "height": 720,
-                  "width": 1280,
+                  "height": 1080,
+                  "width": 1920,
               }, indent=2, ensure_ascii=False))
 
     print(f"geschrieben: {wurzel.relative_to(WURZEL)}")

@@ -26,7 +26,7 @@ die Auffälligkeit in den Daten.
 
 ### Dann die Reparatur
 
-5. Schau rechts unter **Visualisierungen** in das Feld **Felder**. Dort steht
+5. Schau rechts unter **Visualisierungen** in das Feld **Wert**. Dort steht
    `Summe von Marge`. Klick auf den kleinen **Pfeil nach unten** direkt daneben.
 6. Es klappt eine Liste auf: **Summe · Durchschnitt · Minimum · Maximum · Anzahl**
    und weitere. Wähle **Durchschnitt**.
@@ -43,7 +43,7 @@ die Auffälligkeit in den Daten.
 
 > Die zweite Karte zeigt jetzt: **31,8 %**.
 >
-> Steht da etwas anderes? → Häufigste Ursache: Im Feld **Felder** steht noch
+> Steht da etwas anderes? → Häufigste Ursache: Im Feld **Wert** steht noch
 > `Summe von Marge` statt `Durchschnitt von Marge`. Prüf Schritt 5 und 6.
 >
 > Oder: [Checkpoint-Datei laden](https://github.com/Losveratos/powerbi-einstieg/releases/latest/download/business_checkpoint_visuals.pbix) und ab Schritt 8

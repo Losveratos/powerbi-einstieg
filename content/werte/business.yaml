@@ -12,6 +12,8 @@ falsche_zahl: 763,64
 filterregion: Nord
 filterwert: '480.981'
 gesamtwert: 2.100.088
+gesamtwert_falsch: 210,01 Mio.
+gesamtwert_kurz: 2,10 Mio.
 groesste_region: Süd
 kurz: Verkaufszahlen aus dem Vertriebssystem
 richtige_zahl: 31,8 %

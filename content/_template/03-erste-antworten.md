@@ -24,17 +24,12 @@ Tabelle).
 3. Auf der Seite erscheint ein leeres graues Kästchen.
 4. Klapp im Bereich **Daten** die Tabelle **{{tabellen_name}}** auf und setz das
    Häkchen bei **Umsatz**. In dem Kästchen erscheint eine Zahl.
-5. Die Zahl ist noch abgekürzt, zum Beispiel „2,10 Mio". Das stellen wir um:
-   Klick auf das **Pinselsymbol** unter *Visualisierungen* (Beschriftung
-   *Visual formatieren*) → Reiter **Visual** → Abschnitt **Rufzeichenwert**
-   aufklappen.
-   Stell dort ein:
-   - **Anzeigeeinheiten**: `Keine`
-   - **Werte-Dezimalstellen**: `0`
-
-   (Heißt der Abschnitt bei dir **Datenbeschriftungen** statt *Rufzeichenwert*?
-   Dann ist es eine ältere Version — die Einstellungen sind dieselben.)
-6. Zieh das Kästchen an einer Ecke kleiner und schieb es nach links oben.
+5. Die Zahl steht dort abgekürzt: **{{gesamtwert_kurz}}**. Power BI kürzt große
+   Zahlen von sich aus — „Mio." heißt Millionen. Das ist so in Ordnung und
+   bleibt auch so; für die Frage „wie viel insgesamt?" reicht diese Genauigkeit
+   völlig.
+6. Schieb das Kästchen nach links oben und zieh es an einer Ecke etwas größer,
+   damit die Zahl gut lesbar ist.
 
 ### Bild 2 — die Balken: Wer?
 
@@ -72,14 +67,22 @@ aufgeteilt nach einer Dimension.
 
 ## ✅ Kontrollpunkt
 
-> Die Karte zeigt: **{{gesamtwert}}**.
+> Die Karte zeigt: **{{gesamtwert_kurz}}**.
 > Im Balkendiagramm steht **{{groesste_region}}** ganz oben.
 >
-> Steht in der Karte etwas anderes? → Häufigste Ursache: In Modul 2 wurde der
-> Umsatz ohne **Gebietsschema Englisch (USA)** umgewandelt — dann sind alle
-> Beträge um das Hundertfache zu groß. Zeigt die Karte eine viel kleinere Zahl
-> oder „(Leer)", ist statt der Summe die Anzahl eingestellt: Klick rechts im
-> Feld **Felder** auf den kleinen Pfeil neben **Umsatz** und wähle **Summe**.
+> Steht dort **{{gesamtwert_falsch}}**? → Dann wurde in Modul 2 der Umsatz ohne
+> **Gebietsschema Englisch (USA)** umgewandelt. Power BI hat den Punkt als
+> Tausendertrennzeichen gelesen, dadurch sind alle Beträge hundertmal zu groß.
+> Geh zurück zu Modul 2, Handgriff 7.
+>
+> Steht dort eine viel kleinere Zahl oder „(Leer)"? → Dann ist statt der Summe
+> die Anzahl eingestellt. Klick rechts im Feld **Wert** auf den kleinen Pfeil
+> neben **Umsatz** und wähle **Summe**.
+>
+> Willst du es ganz genau wissen: Die Summe auf den Euro beträgt
+> **{{gesamtwert}}**. Sehen kannst du sie, indem du in der Tabellenansicht
+> die Spalte **Umsatz** anklickst und unter **Spaltentools** die
+> **Dezimalstellen** auf `0` stellst — nötig ist das aber nicht.
 >
 > Oder: [Checkpoint-Datei laden]({{checkpoint_geputzt}}) und ab Schritt 1 dieses
 > Moduls neu anfangen.

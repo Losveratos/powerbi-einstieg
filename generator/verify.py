@@ -177,6 +177,11 @@ def main() -> int:
         "schritte": str(cfg["schritte"]),
         # Modul 3
         "gesamtwert": de(gesamtwert),
+        # So zeigt die Karte den Wert wirklich an: Power BI kuerzt grosse Zahlen
+        # standardmaessig ("Anzeigeeinheiten: Auto"). Verifiziert in Power BI
+        # Desktop 2.156 - die neue Karte hat keinen Regler dafuer im Visual.
+        "gesamtwert_kurz": de(gesamtwert / 1_000_000, 2) + " Mio.",
+        "gesamtwert_falsch": de(gesamtwert / 10_000, 2) + " Mio.",
         "groesste_region": groesste_region,
         # Modul 4
         "filterwert": de(nord_umsatz),

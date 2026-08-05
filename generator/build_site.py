@@ -129,13 +129,48 @@ def seite_bauen(case: str, werte: dict) -> str:
         for i, (_, anker, titel) in enumerate(MODULE)
     )
 
+    # Kompakte Sprungmarken für die Kopfleiste (die Seite ist sehr lang).
+    topbar = "\n".join(
+        f'      <a class="pp-tb-link" href="#{anker}" data-ziel="{anker}" '
+        f'title="{titel}">{i if i < 7 else "Ex"}</a>'
+        for i, (_, anker, titel) in enumerate(MODULE)
+    )
+
     return SEITE.format(
         titel=werte["titel"],
         nav=nav,
+        topbar=topbar,
         module="\n\n".join(teile),
         csv_url=werte["csv_url"],
         fertig=werte["checkpoint_fertig"],
+        skript=SKRIPT,
     )
+
+
+# Hebt in der Kopfleiste hervor, in welchem Modul man gerade liest. Bei einer
+# Seite dieser Länge ist das der Unterschied zwischen Navigation und Raten.
+SKRIPT = """
+(function () {
+  var links = {};
+  document.querySelectorAll('.pp-tb-link').forEach(function (a) {
+    links[a.dataset.ziel] = a;
+  });
+  var beobachter = new IntersectionObserver(function (eintraege) {
+    eintraege.forEach(function (e) {
+      var a = links[e.target.id];
+      if (!a) return;
+      if (e.isIntersecting) {
+        document.querySelectorAll('.pp-tb-link.ist-aktiv')
+          .forEach(function (x) { x.classList.remove('ist-aktiv'); });
+        a.classList.add('ist-aktiv');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  document.querySelectorAll('.pp-modul').forEach(function (s) {
+    beobachter.observe(s);
+  });
+})();
+"""
 
 
 SEITE = """<!DOCTYPE html>
@@ -162,6 +197,7 @@ SEITE = """<!DOCTYPE html>
   --blau:      #1E3A5F;
 }}
 * {{ box-sizing: border-box; }}
+html {{ scroll-behavior: smooth; }}
 body {{
   margin: 0; background: var(--bg); color: var(--ink);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -169,6 +205,46 @@ body {{
   -webkit-font-smoothing: antialiased;
 }}
 .pp-wrap {{ max-width: 780px; margin: 0 auto; padding: 0 20px 100px; }}
+
+/* Kopfleiste: Rückweg zur Kitchen + Sprungmarken.
+   Bleibt anders als im grossen Guide auch auf dem Handy sichtbar - sonst
+   kommt man von dieser Seite nur ueber den Zurueck-Knopf des Browsers weg. */
+.pp-topbar {{
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 250, 245, .93);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}}
+.pp-topbar-inner {{
+  max-width: 780px; margin: 0 auto; padding: 10px 20px;
+  display: flex; align-items: center; gap: 14px;
+}}
+.pp-back {{
+  flex: 0 0 auto; text-decoration: none; white-space: nowrap;
+  color: var(--akzent); border: 1px solid var(--akzent); border-radius: 100px;
+  padding: 5px 13px; font-size: 13px; font-weight: 600;
+  transition: background .15s, color .15s;
+}}
+.pp-back:hover {{ background: var(--akzent); color: #fff; }}
+.pp-tb-titel {{
+  font-size: 13px; color: var(--ink-mute); margin-right: auto;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}}
+.pp-tb-links {{ display: flex; gap: 4px; flex: 0 0 auto; }}
+.pp-tb-link {{
+  width: 26px; height: 26px; border-radius: 50%;
+  display: grid; place-items: center; text-decoration: none;
+  font-size: 12px; font-weight: 700; color: var(--ink-mute);
+  background: var(--bg-soft); border: 1px solid transparent;
+  transition: all .15s;
+}}
+.pp-tb-link:hover {{ color: var(--ink); border-color: var(--line-strong); }}
+.pp-tb-link.ist-aktiv {{ background: var(--ink); color: #fff; }}
+@media (max-width: 720px) {{
+  /* Auf schmalen Displays nur der Rückweg - die Kreise wuerden umbrechen. */
+  .pp-tb-links {{ display: none; }}
+  .pp-tb-titel {{ font-size: 12px; }}
+}}
 
 /* Kopf */
 .pp-hero {{ padding: 72px 0 40px; border-bottom: 2px solid var(--line-strong); }}
@@ -210,7 +286,9 @@ body {{
 .pp-nav-name {{ font-size: 15px; font-weight: 600; }}
 
 /* Module */
-.pp-modul {{ padding: 56px 0 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 20px; }}
+/* scroll-margin: die Kopfleiste klebt oben und wuerde sonst die
+   Modul-Ueberschrift verdecken. */
+.pp-modul {{ padding: 56px 0 8px; border-bottom: 1px solid var(--line); scroll-margin-top: 64px; }}
 .pp-modul-titel {{ font-size: clamp(26px, 4vw, 34px); line-height: 1.2; margin: 0 0 6px; font-weight: 700; }}
 .pp-modul h2 {{ font-size: 22px; margin: 36px 0 10px; font-weight: 700; }}
 .pp-modul h3 {{ font-size: 18px; margin: 28px 0 8px; font-weight: 700; color: var(--ink-soft); }}
@@ -283,6 +361,17 @@ blockquote.pp-tip {{ background: #F5F8FB; border-color: #D6E2EE; border-left: 4p
 </style>
 </head>
 <body>
+
+<nav class="pp-topbar" aria-label="Seitennavigation">
+  <div class="pp-topbar-inner">
+    <a class="pp-back" href="index.html">← Knowledge Kitchen</a>
+    <span class="pp-tb-titel">Praxis-Pfad</span>
+    <div class="pp-tb-links">
+{topbar}
+    </div>
+  </div>
+</nav>
+
 <div class="pp-wrap">
 
   <header class="pp-hero">
@@ -319,9 +408,11 @@ blockquote.pp-tip {{ background: #F5F8FB; border-color: #D6E2EE; border-left: 4p
     <a href="{csv_url}">verkaeufe_2025.csv</a>.</p>
     <p>Steckst du fest? An jedem Kontrollpunkt liegt eine fertige Datei zum
     Weitermachen. <a href="{fertig}">Den Endstand ansehen</a>.</p>
+    <p><a href="index.html">← Zurück zur Knowledge Kitchen</a></p>
   </footer>
 
 </div>
+<script>{skript}</script>
 </body>
 </html>
 """
